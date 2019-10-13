@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<!-- path doesn't start with / because / says "go to the root"
+so it woudn't find the right path -->
+
+<h1>Are you bored?</h1>
+<br>
+
+<p>Add a new <a href="campgrounds-add">campground!</a></p>
+<h4>Let's see the best camping spots on the world</h4>
+
+<ul>
+    <% camps.forEach(function(camp){ %>
+    <li>
+        <h5><%= camp.name %></h5>
+        <img src="<%= camp.img %>" alt="<%= camp.name %>">
+    </li>
+    <% }); %>
+</ul>
+
+<% include partials/footer.ejs %>

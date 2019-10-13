@@ -1,0 +1,15 @@
+<% include partials/header.ejs %>
+
+<p>Add a new campground</p>
+
+<form action="/campgrounds" method="POST">
+    <label for="campName">Name</label>
+    <input type="text" placeholder="put a name" name="campName">
+    <label for="campImg">Image</label>
+    <input type="url" placeholder="put a url" name="campImg">
+
+    <button type="submit">Submit</button>
+</form>
+
+
+<% include partials/footer.ejs %>
