@@ -3,19 +3,28 @@
 <!-- path doesn't start with / because / says "go to the root"
 so it woudn't find the right path -->
 
-<h1>Are you bored?</h1>
-<br>
 
-<p>Add a new <a href="campgrounds-add">campground!</a></p>
-<h4>Let's see the best camping spots on the world</h4>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>This is the campgrounds site</h1>
+            <p>View our hand-picked campgrounds from all over the world</p>
+            <a href="/campgrounds/add" class="btn btn-primary">Add new Campground</a>
+        </div>
+    </header>
+    
+    <h4>Let's see the best camping spots on the world</h4>
+    
+    <div class="row">
+        <% camps.forEach(function(camp){ %>
+            <div class="camps-container col-lg-4 col-md-6">
+                <img src="<%= camp.image %>" alt="<%= camp.name %>">
+                <p><%= camp.name %></p>
+            </div>
+        <% }); %>
+    </div>
 
-<ul>
-    <% camps.forEach(function(camp){ %>
-    <li>
-        <h5><%= camp.name %></h5>
-        <img src="<%= camp.img %>" alt="<%= camp.name %>">
-    </li>
-    <% }); %>
-</ul>
+</div>
+
 
 <% include partials/footer.ejs %>

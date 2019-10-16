@@ -1,7 +1,13 @@
-img{
-    width: 50%;
-    height: 50%;
+.camps-container img {
+    height: 250px;
+    width: 100%;
 }
-h1{
-    color: red;
+.camps-container {
+    padding: 3px;
+    border: 0.5px solid rgb(204, 202, 202);
+    text-align: center;
+}
+.form-new-camp {
+    width: 35%;
+    margin: 0 auto;
 }
