@@ -20,6 +20,7 @@ so it woudn't find the right path -->
             <div class="camps-container col-lg-4 col-md-6">
                 <img src="<%= camp.image %>" alt="<%= camp.name %>">
                 <p><%= camp.name %></p>
+                <a href="campgrounds/<%= camp._id %>" class="btn btn-primary">More info</a>
             </div>
         <% }); %>
     </div>
