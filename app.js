@@ -2,8 +2,12 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require("mongoose")
+    mongoose = require("mongoose"),
+    Campground = require("./models/campground"),
+    seedDB = require("./seeds")
 
+
+seedDB()
 //connection to mongoDB
 mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -12,43 +16,12 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-//model for campground : SCHEMA
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
+
+
+app.get("/", function(req, res){
+    res.redirect("/campgrounds");
 });
 
-var Campground = mongoose.model("Campground", campgroundSchema);
-
-/*
-//testing datas
-var camps = [
-    {name:"L'Amfora", image:"https://static.alanrogers.com/images/generated/f7814f82205277e5/ES80350-info-01_720_540_75_s_c1.jpg",description:"A very cool camp"},
-    {name:"Norway-Fjord", image:"https://www.fjordnorway.com/imageresizer/?image=%2Fdbimgs%2Fsande-camping-turid-sande-beinnes.jpg&action=Background_Overlay",description:"A very cool camp"},
-    {name:"Camping De Molignon", image:"https://static.alanrogers.com/images/generated/3d782eeb65eebd6b/CH9670-info-01_720_540_75_s_c1.jpg",description:"A very cool camp"},
-    {name:"Peruvian Andes", image:"https://previews.123rf.com/images/belikova/belikova1802/belikova180200006/94623178-camping-in-the-peruvian-andes-salkantay-trekking-peru-.jpg",description:"A very cool camp"},
-    {name:"Lagos de Somiedo", image:"https://about-spain.net/tourism/photos/camping-spain.jpg",description:"A very cool camp"},
-    {name:"Lagos de Somiedo", image:"https://about-spain.net/tourism/photos/camping-spain.jpg",description:"A very cool camp"},
-    {name:"L'Amfora", image:"https://static.alanrogers.com/images/generated/f7814f82205277e5/ES80350-info-01_720_540_75_s_c1.jpg",description:"A very cool camp"},
-    {name:"Norway-Fjord", image:"https://www.fjordnorway.com/imageresizer/?image=%2Fdbimgs%2Fsande-camping-turid-sande-beinnes.jpg&action=Background_Overlay",description:"A very cool camp"},
-    {name:"Camping De Molignon", image:"https://static.alanrogers.com/images/generated/3d782eeb65eebd6b/CH9670-info-01_720_540_75_s_c1.jpg",description:"A very cool camp"},
-]; 
-
-camps.forEach(function(camp){
-    Campground.create(
-        {
-        name:camp["name"], image:camp["image"], description:camp["description"]
-    }, function(err, newCamp){
-        if(err){
-            console.log(err);
-        } else{
-            console.log("SUCCEDED");
-        }
-    });
-}); 
-
-*/
 //FORM FOR ADD A NEW CAMPGROUND
 app.post("/campgrounds", function(req, res){
     //get data from form and add to camps array
@@ -86,11 +59,13 @@ app.get("/campgrounds/add", function(req, res){
     res.render("campgrounds-add");
 });
 
+//SHOW campground route
 app.get("/campgrounds/:id", function(req, res){ 
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log(err);
         } else{
+            console.log(foundCampground.comments)
             //change in future to campground all to make more sense + cleaner code
             res.render("campgrounds-show", {camp: foundCampground});
         }
