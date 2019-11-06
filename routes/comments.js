@@ -1,19 +1,19 @@
-var express = require("express");
-var router  = express.Router({mergeParams: true});
-var Campground = require("../models/campground");
-var Comment    = require("../models/comment");
+var express     = require("express");
+var router      = express.Router({mergeParams: true});
+var Campground  = require("../models/campground");
+var Comment     = require("../models/comment");
 
 
 
 // NEW form for a comment
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", isLoggedIn, function(req, res){
 
     console.log(req.params.id);
     Campground.findById(req.params.id, function(err, campground) {
         if(err){
             console.log(err);
         } else {
-            res.render("comments/new", { camp: campground });
+            res.render("comments/new", {campground: campground});
         }
     });
 });
@@ -51,4 +51,4 @@ function isLoggedIn(req, res, next) {
 };
 
 
-module.exports = router();
+module.exports = router;

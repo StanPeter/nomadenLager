@@ -3,10 +3,6 @@ var router   = express.Router();
 var passport = require("passport");
 var User     = require("../models/user");
 
-// ==============
-// AUTH ROUTES
-// ==============
-
 //show register form
 router.get("/register", function (req, res) {
     res.render("registration/register");
@@ -54,4 +50,4 @@ function isLoggedIn(req, res, next) {
 
 
 
-module.exports = router();
+module.exports = router;

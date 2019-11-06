@@ -4,17 +4,15 @@ var Campground = require("../models/campground");
 
 
 
-
-
 //INDEX show all campgrounds
 router.get("/", function (req, res) {
     //create a new campground ans save to DB
-    Campground.find({}, function (err, allCamps) {
+    Campground.find({}, function (err, allCampgrounds) {
         console.log(req.user);
         if(err) {
             console.log(err);
         } else {
-            res.render("campgrounds/index", {camps:allCamps, currentUser: req.user });
+            res.render("campgrounds/index", {campgrounds:allCampgrounds, currentUser: req.user });
         }
     });
 });
@@ -36,11 +34,11 @@ router.post("/", function (req, res) {
         image: image,
         description: desc
 
-    }, function (err, newCamp) {
+    }, function (err, newCampground) {
         if (err) {
             console.log(err);
         } else {
-            console.log("CREATED:" + newCamp);
+            console.log("CREATED:" + newCampground);
             res.redirect("/campgrounds");
         }
     });
@@ -54,7 +52,7 @@ router.get("/:id", function (req, res) {
         } else {
             console.log(foundCampground.comments)
             //change in future to campground all to make more sense + cleaner code
-            res.render("campgrounds/show", { camp: foundCampground });
+            res.render("campgrounds/show", {campground: foundCampground });
         }
     });
 });
@@ -62,3 +60,4 @@ router.get("/:id", function (req, res) {
 
 
 module.exports = router;
+

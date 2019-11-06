@@ -16,11 +16,11 @@ so it woudn't find the right path -->
     <h4>Let's see the best camping spots on the world</h4>
     
     <div class="row">
-        <% camps.forEach(function(camp){ %>
+        <% campgrounds.forEach(function(campground){ %>
             <div class="camps-container col-lg-4 col-md-6">
-                <img src="<%= camp.image %>" alt="<%= camp.name %>">
-                <p><%= camp.name %></p>
-                <a href="campgrounds/<%= camp._id %>" class="btn btn-primary">More info</a>
+                <img src="<%= campground.image %>" alt="<%= campground.name %>">
+                <p><%= campground.name %></p>
+                <a href="campgrounds/<%= campground._id %>" class="btn btn-primary">More info</a>
             </div>
         <% }); %>
     </div>

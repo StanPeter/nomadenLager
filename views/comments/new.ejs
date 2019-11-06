@@ -4,17 +4,17 @@
 
 <div class="container">
 
-    <h1 class="text-center">Add  New Comment to <%= camp.name %></h1>
+    <h1 class="text-center">Add  New Comment to <%= campground.name %></h1>
     <div class="form-new-camp">
 
-        <form class="my-3" action="/campgrounds/<%= camp._id %>/comments" method="POST">
+        <form class="my-3" action="/campgrounds/<%= campground._id %>/comments" method="POST">
             <input class="form-control m-2" type="text" placeholder="author" name="comment[author]">
             <input class="form-control m-2" type="text" placeholder="Write a comment" name="comment[text]">
             
             <button class="m-2 btn btn-lg btn-block btn-primary" type="submit">Submit</button>
         </form>
 
-        <a href="/campgrounds/<%= camp._id %>/">Go back</a>
+        <a href="/campgrounds/<%= campground._id %>/">Go back</a>
     </div>
 
 </div>

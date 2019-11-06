@@ -6,6 +6,8 @@ var express     = require("express"),
     passport    = require("passport"),
     LocalStrategy = require("passport-local"),
     User        = require("./models/user"),
+    Campground  = require("./models/campground"),
+    Comment     = require("./models/comment"),
     seedDB      = require("./seeds")
 
 var commentRoutes     = require("./routes/comments"),
