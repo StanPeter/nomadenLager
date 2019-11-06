@@ -26,15 +26,21 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <ul class="navbar-nav ">
+                <% if(!currentUser){ %>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
+                    <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+                <% } else { %>
+                <li class="nax-item">
+                    <a class="nav-link">User: <%= currentUser.username %> </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
+                <% } %>
             </ul>
         </div>
     </nav>
