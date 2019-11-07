@@ -48,7 +48,7 @@ router.post("/", isLoggedIn, function(req, res) {
 });
 
 //EDIT comment
-router.get("/:comment_id/edit", function(req, res){
+router.get("/:comment_id/edit", checkUsersCommentRights, function(req, res){
     Comment.findById(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -59,7 +59,7 @@ router.get("/:comment_id/edit", function(req, res){
 });
 
 //UPDATE comment
-router.put("/:comment_id", function(req, res){
+router.put("/:comment_id", checkUsersCommentRights, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
         if(err){
             res.send("ERROR");
@@ -70,7 +70,7 @@ router.put("/:comment_id", function(req, res){
 });
 
 //DESTROY comment
-router.delete("/:comment_id", function(req, res){
+router.delete("/:comment_id", checkUsersCommentRights, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if(err){
             res.redirect("back");
@@ -89,6 +89,31 @@ function isLoggedIn(req, res, next) {
     };
     res.redirect("/login");
 };
+
+
+//check user's rights for a comment 
+function checkUsersCommentRights(req, res, next) {
+    if (req.isAuthenticated()) {
+
+        Comment.findById(req.params.comment_id, function (err, foundComment) {
+            if (err) {
+                res.redirect("back");
+                console.log(err);
+            } else {
+                //check if user owns the comment
+                if (foundComment.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.send("You don't have neccesary permission for this");
+                }
+            }
+        });
+    } else {
+        //redirect to the previous webpage
+        res.redirect("back");
+    };
+}
+
 
 
 module.exports = router;
