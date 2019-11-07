@@ -30,9 +30,17 @@
                 </div>
                 
                 <div class="well">
+                    <% if(currentUser) { %>
                     <div class="text-right">
                         <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success">Add a comment</a>
+                        <% if(campground.author.id.equals(currentUser._id)) { %>
+                        <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
+                        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <% } %>
                     </div>
+                    <% } %>
 
                     <hr>
 

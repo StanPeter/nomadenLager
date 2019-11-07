@@ -1,22 +1,22 @@
 //all required libraries
-var express     = require("express"),
-    app         = express(),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-    passport    = require("passport"),
-    LocalStrategy = require("passport-local"),
-    User        = require("./models/user"),
-    Campground  = require("./models/campground"),
-    Comment     = require("./models/comment"),
-    seedDB      = require("./seeds")
+var express          = require("express"),
+    app              = express(),
+    bodyParser       = require("body-parser"),
+    mongoose         = require("mongoose"),
+    passport         = require("passport"),
+    methodOverride   = require("method-override"),
+    LocalStrategy    = require("passport-local"),
+    User             = require("./models/user"),
+    Campground       = require("./models/campground"),
+    Comment          = require("./models/comment"),
+    seedDB           = require("./seeds")
 
-var commentRoutes     = require("./routes/comments"),
-    campgroundRoutes  = require("./routes/campgrounds"),
-    indexRoutes       = require("./routes/index")
+var commentRoutes    = require("./routes/comments"),
+    campgroundRoutes = require("./routes/campgrounds"),
+    indexRoutes      = require("./routes/index")
 
 
-// seedDB()
-
+    
 //connection to mongoDB
 mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -24,6 +24,9 @@ mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true, useUn
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
+    
+// seedDB()
 
 //PASSPORT configuration
 app.use(require("express-session")({
@@ -39,8 +42,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//this middleware will run on every single route
-//pass user data
+//middleware for access currentUser data on every route
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     next();

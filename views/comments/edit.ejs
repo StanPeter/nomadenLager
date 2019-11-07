@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs %>
+
+
+
+<div class="container">
+
+    <h1 class="text-center">Edit comment for <%= campground.name %></h1>
+    <div class="form-new-camp">
+
+        <form class="my-3" action="/campgrounds/<%= campground._id %>/comments/" method="POST">
+            <textarea class="form-control m-2" name="comment[text]" placeholder="Write a comment" cols="30"
+                rows="3"></textarea>
+
+            <button class="m-2 btn btn-lg btn-block btn-primary" type="submit">Submit</button>
+        </form>
+
+        <a href="/campgrounds/<%= campground._id %>/">Go back</a>
+    </div>
+
+</div>
+
+
+
+
+<% include ../partials/footer.ejs %>

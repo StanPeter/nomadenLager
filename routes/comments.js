@@ -47,6 +47,24 @@ router.post("/", isLoggedIn, function(req, res) {
 
 });
 
+//EDIT comment
+router.get("/:comment_id/edit", function(req, res){
+    res.send("you made it bro");
+});
+
+//UPDATE comment
+router.put("/:comment_id", function(req, res){
+    res.send("updated");
+});
+
+//DESTROY comment
+router.delete("/:comment_id/delete", function(req, res){
+    res.send("deleted");
+});
+
+app.use("/campgrounds/:id/comments", commentRoutes);
+
+
 //authentication security middleware
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
