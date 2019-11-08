@@ -3,6 +3,13 @@ var router   = express.Router();
 var passport = require("passport");
 var User     = require("../models/user");
 
+
+
+//redirect index route
+router.get("/", function(req, res){
+    res.redirect("/campgrounds");
+});
+
 //show register form
 router.get("/register", function (req, res) {
     res.render("registration/register");
