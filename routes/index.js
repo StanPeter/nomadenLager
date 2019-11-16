@@ -4,7 +4,7 @@ var passport    = require("passport");
 var User        = require("../models/user");
 
 
-//redirect index route
+//redirect to index(campgrounds) route
 router.get("/", function(req, res){
     res.redirect("/campgrounds");
 });
@@ -28,7 +28,7 @@ router.post("/register", function (req, res) {
     });
 });
 
-//show logic form
+//show login form
 router.get("/login", function (req, res) {
     res.render("registration/login");
 });
@@ -44,6 +44,7 @@ router.post("/login", passport.authenticate("local",
 //logout route
 router.get("/logout", function (req, res) {
     req.logout();
+    req.flash("error", "You logged out");
     res.redirect("/campgrounds");
 });
 

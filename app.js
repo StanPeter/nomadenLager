@@ -3,6 +3,7 @@ var express          = require("express"),
     app              = express(),
     bodyParser       = require("body-parser"),
     mongoose         = require("mongoose"),
+    flash            = require("connect-flash"),
     passport         = require("passport"),
     methodOverride   = require("method-override"),
     LocalStrategy    = require("passport-local"),
@@ -25,8 +26,12 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
-    
+
+//seed database to start with some data
 // seedDB()
+
+//flash message
+app.use(flash());
 
 //PASSPORT configuration
 app.use(require("express-session")({
@@ -45,6 +50,7 @@ passport.deserializeUser(User.deserializeUser());
 //middleware for access currentUser data on every route
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.message     = req.flash("error");
     next();
 });
 
