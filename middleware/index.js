@@ -12,6 +12,8 @@ middlewareObj.isLoggedIn = function(req, res, next){
         if (req.isAuthenticated()) {
             return next();
         };
+
+        req.flash("error", "You need to be logged in to do that!");
         res.redirect("/login");
 };
 
@@ -22,20 +24,22 @@ middlewareObj.checkUsersRights = function(req,res ,next){
 
         Campground.findById(req.params.id, function (err, foundCampground) {
             if (err) {
+                req.flash("error", "Campground not found");
                 res.redirect("back");
-                console.log(err);
             } else {
                 //check if user owns the campground
                 //woudn't work with campground.author.id === req.user._id --> object vs string
                 if (foundCampground.author.id.equals(req.user._id)) {
                     next();
                 } else {
-                    res.send("You don't have neccesary permission for this");
+                    req.flash("error", "You do not have neccesary permission for this");
+                    res.redirect("back");
                 }
             }
         });
     } else {
         //redirect to the previous webpage
+        req.flash("error", "You need to be logged in to do that!");
         res.redirect("back");
     };
 }
@@ -47,19 +51,21 @@ middlewareObj.checkUsersCommentRights = function(req, res, next){
 
         Comment.findById(req.params.comment_id, function (err, foundComment) {
             if (err) {
+                req.flash("error", "Comment not found");
                 res.redirect("back");
-                console.log(err);
             } else {
                 //check if user owns the comment
                 if (foundComment.author.id.equals(req.user._id)) {
                     next();
                 } else {
-                    res.send("You don't have neccesary permission for this");
+                    req.flash("error", "You do not have neccesary permission for this");
+                    res.redirect("back");
                 }
             }
         });
     } else {
         //redirect to the previous webpage
+        req.flash("error", "You need to be logged in to do that!");
         res.redirect("back");
     };
 }

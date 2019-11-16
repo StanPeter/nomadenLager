@@ -49,8 +49,9 @@ passport.deserializeUser(User.deserializeUser());
 
 //middleware for access currentUser data on every route
 app.use(function(req, res, next){
-    res.locals.currentUser = req.user;
-    res.locals.message     = req.flash("error");
+    res.locals.currentUser  = req.user;
+    res.locals.error        = req.flash("error");
+    res.locals.success      = req.flash("success");
     next();
 });
 
