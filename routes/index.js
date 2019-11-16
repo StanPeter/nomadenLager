@@ -1,8 +1,7 @@
-var express  = require("express");
-var router   = express.Router();
-var passport = require("passport");
-var User     = require("../models/user");
-
+var express     = require("express");
+var router      = express.Router();
+var passport    = require("passport");
+var User        = require("../models/user");
 
 
 //redirect index route
@@ -41,19 +40,12 @@ router.post("/login", passport.authenticate("local",
         failureRedirect: "/login"
     }), function (req, res) {
     });
+    
 //logout route
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/campgrounds");
 });
-
-//authentication security
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    };
-    res.redirect("/login");
-};
 
 
 

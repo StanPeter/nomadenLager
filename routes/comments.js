@@ -2,11 +2,11 @@ var express     = require("express");
 var router      = express.Router({mergeParams: true});
 var Campground  = require("../models/campground");
 var Comment     = require("../models/comment");
-
+var middleware  = require("../middleware");
 
 
 // NEW form for a comment
-router.get("/new", isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
 
     console.log(req.params.id);
     Campground.findById(req.params.id, function(err, campground) {
@@ -19,7 +19,7 @@ router.get("/new", isLoggedIn, function(req, res){
 });
 
 // CREATE add a new comment do DB
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
     // lookup campground using ID
     Campground.findById(req.params.id, function(err, campground) {
         if (err) {
@@ -48,7 +48,7 @@ router.post("/", isLoggedIn, function(req, res) {
 });
 
 //EDIT comment
-router.get("/:comment_id/edit", checkUsersCommentRights, function(req, res){
+router.get("/:comment_id/edit", middleware.checkUsersCommentRights, function(req, res){
     Comment.findById(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -59,7 +59,7 @@ router.get("/:comment_id/edit", checkUsersCommentRights, function(req, res){
 });
 
 //UPDATE comment
-router.put("/:comment_id", checkUsersCommentRights, function(req, res){
+router.put("/:comment_id", middleware.checkUsersCommentRights, function(req, res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
         if(err){
             res.send("ERROR");
@@ -70,7 +70,7 @@ router.put("/:comment_id", checkUsersCommentRights, function(req, res){
 });
 
 //DESTROY comment
-router.delete("/:comment_id", checkUsersCommentRights, function(req, res){
+router.delete("/:comment_id", middleware.checkUsersCommentRights, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if(err){
             res.redirect("back");
@@ -80,39 +80,6 @@ router.delete("/:comment_id", checkUsersCommentRights, function(req, res){
     });
 });
 
-
-
-//authentication security middleware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    };
-    res.redirect("/login");
-};
-
-
-//check user's rights for a comment 
-function checkUsersCommentRights(req, res, next) {
-    if (req.isAuthenticated()) {
-
-        Comment.findById(req.params.comment_id, function (err, foundComment) {
-            if (err) {
-                res.redirect("back");
-                console.log(err);
-            } else {
-                //check if user owns the comment
-                if (foundComment.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.send("You don't have neccesary permission for this");
-                }
-            }
-        });
-    } else {
-        //redirect to the previous webpage
-        res.redirect("back");
-    };
-}
 
 
 

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground");
-
+var middleware = require("../middleware");
 
 
 //INDEX show all campgrounds
@@ -18,12 +18,12 @@ router.get("/", function (req, res) {
 });
 
 //NEW display form for a new campground
-router.get("/new", isLoggedIn, function (req, res) {
+router.get("/new", middleware.isLoggedIn, function (req, res) {
     res.render("campgrounds/new");
 });
 
 //CREATE add a new campground to DB
-router.post("/", isLoggedIn, function (req, res) {
+router.post("/", middleware.isLoggedIn, function (req, res) {
     //get data from form and add to camps array
     var name = req.body.campName;
     var image = req.body.campImg;
@@ -59,7 +59,7 @@ router.get("/:id", function (req, res) {
 });
 
 //EDIT campground route
-router.get("/:id/edit", checkUsersRights, function(req, res){
+router.get("/:id/edit", middleware.checkUsersRights, function(req, res){
     //check if user logged in
     if(req.isAuthenticated()){
         
@@ -70,7 +70,7 @@ router.get("/:id/edit", checkUsersRights, function(req, res){
 });
 
 //UPDATE campground route
-router.put("/:id", checkUsersRights, function(req, res){
+router.put("/:id", middleware.checkUsersRights, function(req, res){
     //find the campground by id and update
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         res.redirect("/campgrounds/" + req.params.id);
@@ -78,43 +78,11 @@ router.put("/:id", checkUsersRights, function(req, res){
 });
 
 //DESTROY campground route
-router.delete("/:id", checkUsersRights, function(req, res){
+router.delete("/:id", middleware.checkUsersRights, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
         res.redirect("/campgrounds");
     });
 });
-
-//authentication security middleware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    };
-    res.redirect("/login");
-};
-
-//check user's rights for a campground 
-function checkUsersRights(req, res, next){
-    if (req.isAuthenticated()) {
-
-        Campground.findById(req.params.id, function (err, foundCampground) {
-            if (err) {
-                res.redirect("back");
-                console.log(err);
-            } else {
-                //check if user owns the campground
-                //woudn't work with campground.author.id === req.user._id --> object vs string
-                if (foundCampground.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.send("You don't have neccesary permission for this");
-                }
-            }
-        });
-    } else {
-        //redirect to the previous webpage
-        res.redirect("back");
-    };
-}
 
 
 
