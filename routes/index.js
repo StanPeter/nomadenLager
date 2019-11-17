@@ -6,7 +6,7 @@ var User        = require("../models/user");
 
 //redirect to index(campgrounds) route
 router.get("/", function(req, res){
-    res.redirect("/campgrounds");
+    res.render("partials/landing");
 });
 
 //show register form
