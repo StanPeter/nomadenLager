@@ -13,7 +13,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
             req.flash("error", "Something went wrong.");
-            res.redirect("back");
+            res.redirect("/campgrounds");
         } else {
             res.render("comments/new", {campground: campground});
         }
@@ -27,7 +27,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
         if (err) {
             console.log(err);
             req.flash("error", "Something went wrong.");
-            res.redirect("back");
+            res.redirect("/campgrounds");
         } else {
             // create a new comment
             Comment.create(req.body.comment, function(err, comment) {

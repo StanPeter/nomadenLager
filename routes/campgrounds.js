@@ -40,7 +40,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
         if (err) {
             console.log(err);
             req.flash("error", "Something went wrong.");
-            res.redirect("back");
+            res.redirect("/campgrounds");
         } else {
             req.flash("success", "Campground successfully created.");
             res.redirect("/campgrounds");
@@ -51,10 +51,10 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
 //SHOW shows a specific campground
 router.get("/:id", function (req, res) {
     Campground.findById(req.params.id).populate("comments").exec(function (err, foundCampground) {
-        if (err) {
+        if (err || !foundCampground) {
             console.log(err);
-            req.flash("error", "Something went wrong.");
-            res.redirect("back");
+            req.flash("error", "Campground not found!");
+            res.redirect("/campgrounds");
         } else {
             //change in future to campground all to make more sense + cleaner code
             res.render("campgrounds/show", {campground: foundCampground });
