@@ -8,6 +8,7 @@
 
         <form class="my-3" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
             <input class="form-control m-2" type="text" value="<%= campground.name %>" name="campground[name]">
+            <input class="form-control m-2" type="number" value="<%= campground.price %>" name="campground[price]" min="0.1" step="0.1">
             <input class="form-control m-2" type="url" value="<%= campground.image %>" name="campground[image]">
             <textarea class="form-control m-2" name="campground[description]" cols="30" rows="3"> 
                 <%= campground.description %> 

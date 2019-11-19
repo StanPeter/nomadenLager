@@ -10,6 +10,7 @@
         <form class="my-3" action="/campgrounds" method="POST">
             <input class="form-control m-2" type="text" placeholder="put a name" name="campName">
             <input class="form-control m-2" type="url" placeholder="put a url" name="campImg">
+            <input class="form-control m-2" type="number" placeholder="price" name="campPrice" min="0.1" step="0.1">
             <textarea class="form-control m-2" name="campDesc" id="" cols="30" rows="3" placeholder="Add some desscription"></textarea>
             <button class="m-2 btn btn-lg btn-block btn-primary" type="submit">Submit</button>
         </form>
