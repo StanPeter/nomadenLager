@@ -20,9 +20,9 @@ var commentRoutes    = require("./routes/comments"),
 
     
 //connection to mongoDB
-//mongoose.connect('mongodb://localhost/yelp_camp', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect('mongodb+srv://stan05:' + process.env.PASS + '@cluster0-skjgi.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+
 //setting for YelpCamp project
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
