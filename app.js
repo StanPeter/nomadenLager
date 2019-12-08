@@ -18,10 +18,11 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
 
 
-    
+
 //connection to mongoDB
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// seedDB();
 
 //setting for YelpCamp project
 app.set("view engine", "ejs");

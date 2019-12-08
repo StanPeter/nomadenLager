@@ -31,7 +31,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
     var price = req.body.campPrice;
     var desc = req.body.campDesc;
     var author = {
-        id: req.user._id,
+        id: req.user._id, 
         username: req.user.username
     };
     //putting data together
