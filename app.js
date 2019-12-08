@@ -21,7 +21,6 @@ var commentRoutes    = require("./routes/comments"),
 
 //connection to mongoDB
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
-
 // seedDB();
 
 //setting for YelpCamp project
