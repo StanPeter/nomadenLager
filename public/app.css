@@ -12,3 +12,8 @@
     width: 35%;
     margin: 0 auto;
 }
+
+.login-form {
+    width: 30%; 
+    margin: 25px auto;
+}

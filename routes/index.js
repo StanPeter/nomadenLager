@@ -32,8 +32,9 @@ router.post("/register", function (req, res) {
 
 //show login form
 router.get("/login", function (req, res) {
-    res.render("registration/login");
+    res.render("registration/login", { page: 'login' });
 });
+
 
 //login route logic
 router.post("/login", passport.authenticate("local",
