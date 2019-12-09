@@ -1,0 +1,32 @@
+<% include ../partials/header.ejs %>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h1 class="text-center"><%= user.firstName %></h1>
+        <div class="img-thumbnail img-fluid">
+            <img style="width: 100%;" src="<%= user.avatar %>" alt="user's picture">
+        </div>
+        <em><a href="#" ><%= user.email %></a></em>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas, mollitia tenetur error dolore magni veniam
+            accusantium hic! Repellat pariatur vel mollitia ullam temporibus. Voluptates quasi aut, similique debitis commodi
+            maiores itaque voluptas iste suscipit nihil iusto ratione magni blanditiis labore!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error accusantium fugit modi quia perspiciatis repellat
+            adipisci nesciunt quas nihil ex excepturi necessitatibus consequatur aperiam rerum dolorem minima fuga voluptatibus
+            nisi earum, fugiat, unde, cum quod! Similique repudiandae vero nesciunt eos.</p>
+    </div>
+
+    <div class="col-md-8">
+        <% if(campgrounds){ %>
+            <% campgrounds.forEach(function(campground){ %>
+                <h2><%= campground.name %></h2>
+                <img style="width: 100%;" src="<%= campground.image %>" alt="">
+            <% }) %>
+        <% }else { %>
+            <h1>This user doesn't have any campground</h1>
+        <% } %>
+    </div>
+</div>
+
+
+<% include ../partials/footer.ejs %>

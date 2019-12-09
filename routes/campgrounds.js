@@ -80,6 +80,7 @@ router.put("/:id", middleware.checkUsersRights, function(req, res){
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         req.flash("success", "Campground successfuly updated.");
         res.redirect("/campgrounds/" + req.params.id);
+        // console.log(req.body.campground.price);
     });
 });
 

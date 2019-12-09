@@ -24,7 +24,7 @@
                     <h1> <%= campground.name %> </h1>
                     <p> <%= campground.description %> </p>
                     <p>
-                        <em>Added by: <%= campground.author.username %> </em>
+                        <em>Added by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a></em>
                     </p>
                 </div>
                 
