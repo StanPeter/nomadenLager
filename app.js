@@ -35,6 +35,9 @@ app.use(methodOverride("_method"));
 //flash message
 app.use(flash());
 
+//moment counts difference between date of creation/today's date
+app.locals.moment = require('moment');
+
 //PASSPORT configuration
 app.use(require("express-session")({
     secret: "This one is secret",
