@@ -30,7 +30,7 @@ middlewareObj.checkUsersRights = function(req, res ,next){
             } else {
                 //check if user owns the campground
                 //woudn't work with campground.author.id === req.user._id --> object vs string
-                if (foundCampground.author.id.equals(req.user._id)) {
+                if (foundCampground.author.id.equals(req.user._id) || req.user.isAdmin) {
                     next();
                 } else {
                     req.flash("error", "You do not have neccesary permission for this");
@@ -56,7 +56,7 @@ middlewareObj.checkUsersCommentRights = function(req, res, next){
                 res.redirect("/campgrounds/" + req.params.id);
             } else {
                 //check if user owns the comment
-                if (foundComment.author.id.equals(req.user._id)) {
+                if (foundComment.author.id.equals(req.user._id) || req.user.isAdmin) {
                     next();
                 } else {
                     req.flash("error", "You do not have neccesary permission for this");
