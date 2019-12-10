@@ -143,6 +143,67 @@ router.post("/forgot", function(req, res, next){
     });
 });
 
+//reset password resend link(token) GET
+router.get("/reset/:token", function(req, res) {
+    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if(!user) {
+            req.flash("error", "Password reset token invalid or has expired");
+            return res.redirect("/forgot");
+        }
+        res.render("registration/reset", { token: req.params.token });
+    });
+});
+
+//reset password resend link(token) POST
+router.post("/reset/:token", function(req, res){
+    async.waterfall([
+        function(done) {
+            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user){
+               if(!user){
+                   req.flash("error", "Password reset token is invalid or has expired");
+                   return res.redirect("back");
+               } 
+               if(req.body.password === req.body.confirm) {
+                    user.setPassword(req.body.password, function(err){
+                        user.resetPasswordToken = undefined;
+                        user.resetPasswordExpires = undefined;
+
+                        user.save(function(err) {
+                            req.logIn(user, function(err) {
+                                done(err, user);
+                            });
+                        });
+                    });
+                } else {
+                    req.flash("error", "Passwords do not match");
+                    return res.redirect("back");
+                }
+            });
+        },
+        function(user, done){
+            var smtpTransport = nodemailer.createTransport({
+                service: "Gmail",
+                auth: {
+                    user: "bestcampground@gmail.com",
+                    pass: process.env.CAMPGROUNDPASSWORD
+                }
+            });
+            var mailOptions = {
+                to: user.email,
+                from: "bestcampground@gmail.com",
+                subject: "Your password has been changed",
+                text: "Hello, \n \n" + 
+                "This is a confirmation that the password for your account " + user.email + " has just been changed. \n"
+            };
+            smtpTransport.sendMail(mailOptions, function(err){
+                req.flash("success", "Success! Your password has been changed");
+                done(err);
+            });
+        }
+    ], function(err) {
+        res.redirect("/campgrounds");
+    });
+});
 
 //USER ROUTES
 router.get("/users/:id", function(req, res){
