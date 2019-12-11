@@ -95,7 +95,7 @@
         });
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7yoms2R5bM4UOq_QmLu45AD_lYCXLC4c&callback=initMap"
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GEOCODE_API_URL %>&callback=initMap"
     type="text/javascript"></script>
 
 <% include ../partials/footer.ejs %>
