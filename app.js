@@ -13,6 +13,7 @@ var express          = require("express"),
     Comment          = require("./models/comment"),
     seedDB           = require("./seeds")
 
+
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
@@ -29,8 +30,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
 
-//seed database to start with some data
-// seedDB()
 
 //flash message
 app.use(flash());
