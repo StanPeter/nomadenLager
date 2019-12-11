@@ -7,12 +7,24 @@
             <h1>This is the campgrounds site</h1>
             <p>View our hand-picked campgrounds from all over the world</p>
             <a href="/campgrounds/new" class="btn btn-primary">Add new Campground</a>
+            <form action="/campgrounds" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control" placeholder="Campground search...">
+                    <input type="submit" value="Search" class="btn btn-default">
+                </div>
+            </form>
         </div>
     </header>
     
     <h4>Let's see the best camping spots on the world</h4>
     
     <div class="row">
+        <div class="col-md-12 text-center my-5">
+            <% if(noMatch !== undefined) { %>
+                <h3><%= noMatch %></h3>
+            <% } %>
+        </div>
+
         <% campgrounds.forEach(function(campground){ %>
             <div class="camps-container col-lg-4 col-md-6">
                 <img src="<%= campground.image %>" alt="<%= campground.name %>">
