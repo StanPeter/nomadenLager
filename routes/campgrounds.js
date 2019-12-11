@@ -51,12 +51,14 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
     geocoder.geocode(req.body.location, function (err, data) {
         if (err || !data.length) {
             req.flash('error', 'Invalid address');
+            console.log(err);
             return res.redirect('back');
         }
         var lat = data[0].latitude;
         var lng = data[0].longitude;
         var location = data[0].formattedAddress;
-    //putting data together
+
+        //putting data together
         var newCampground = { name: name, image: image, price: price, description: desc, author: author, location: location, lat: lat, lng: lng};
         
         Campground.create(newCampground, function (err, newCamp) {
