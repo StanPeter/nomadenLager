@@ -7,13 +7,25 @@
     <h1 class="text-center">Create a New Campground</h1>
     <div class="form-new-camp">
 
-        <form class="my-3" action="/campgrounds" method="POST">
-            <input class="form-control m-2" type="text" placeholder="put a name" name="campName">
-            <input class="form-control m-2" type="url" placeholder="put a url" name="campImg">
-            <input class="form-control m-2" type="number" placeholder="price" name="campPrice" min="0.1" step="0.1">
-            <input class="form-control" type="text" name="location" id="location" placeholder="Yosemite National Park, CA">
-            <textarea class="form-control m-2" name="campDesc" id="" cols="30" rows="3" placeholder="Add some desscription"></textarea>
-            <button class="m-2 btn btn-lg btn-block btn-primary" type="submit">Submit</button>
+        <form class="my-3" action="/campgrounds" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="form-control m-2" type="text" placeholder="put a name" name="campName" required>
+            </div>
+            <div class="form-group">
+                <input type="file" id="campImage" id="campImage" name="campImage" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control m-2" type="number" placeholder="price" name="campPrice" min="0.1" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="location" id="location" placeholder="Yosemite National Park, CA" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control m-2" name="campDesc" id="" cols="30" rows="3" placeholder="Add some desscription"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="m-2 btn btn-lg btn-block btn-primary" type="submit">Submit</button>
+            </div>
         </form>
         
         <a href="/campgrounds">Go back</a>
