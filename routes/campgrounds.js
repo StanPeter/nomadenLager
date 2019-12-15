@@ -171,6 +171,7 @@ router.put("/:id", middleware.checkUsersRights, upload.single("campground[image]
         Campground.findById(req.params.id, function(err, foundCampground){
             if (req.file) {
                 //destroy the old image
+                console.log(foundCampground);
                 cloudinary.v2.uploader.destroy(foundCampground.imageId, function (err, result) {
                     if(err){
                         req.flash("error", err.message);
@@ -183,24 +184,37 @@ router.put("/:id", middleware.checkUsersRights, upload.single("campground[image]
                             return res.redirect("back");
                         }
                         console.log("uploaded");
-
-                        req.body.campground.image = result.secure_url;
+                        foundCampground.image = result.secure_url;
                         foundCampground.imageId = result.public_id;
                         foundCampground.save();
                         console.log("saved");
+                        console.log(foundCampground);
+
+                        //find the campground by id and update
+                        //clean this mess up before final version
+                        Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
+                            if (err) {
+                                req.flash("error", err.message);
+                            } else {
+                                console.log("updated");
+                                req.flash("success", "Campground successfuly updated.");
+                                res.redirect("/campgrounds/" + req.params.id);
+                            }
+                        });
                     });
                 });
-            }
-        });
-        
-        //find the campground by id and update
-        Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
-            if (err) {
-                req.flash("error", err.message);
             } else {
-                console.log("updated");
-                req.flash("success", "Campground successfuly updated.");
-                res.redirect("/campgrounds/" + req.params.id);
+                //find the campground by id and update
+                //clean this mess up before final version (could be much shorter)
+                Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
+                    if (err) {
+                        req.flash("error", err.message);
+                    } else {
+                        console.log("updated");
+                        req.flash("success", "Campground successfuly updated.");
+                        res.redirect("/campgrounds/" + req.params.id);
+                    }
+                });
             }
         });
     });
