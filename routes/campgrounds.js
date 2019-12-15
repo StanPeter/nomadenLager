@@ -156,6 +156,7 @@ router.get("/:id/edit", middleware.checkUsersRights, function(req, res){
     }
 });
 
+
 //UPDATE campground route
 router.put("/:id", middleware.checkUsersRights, upload.single("campground[image]"), function(req, res){
     geocoder.geocode(req.body.location, function (err, data) {
@@ -168,54 +169,33 @@ router.put("/:id", middleware.checkUsersRights, upload.single("campground[image]
         req.body.campground.location = data[0].formattedAddress;
 
         //find campground and upload the image
-        Campground.findById(req.params.id, function(err, foundCampground){
+        Campground.findById(req.params.id, async function(err, foundCampground){
             if (req.file) {
-                //destroy the old image
-                console.log(foundCampground);
-                cloudinary.v2.uploader.destroy(foundCampground.imageId, function (err, result) {
-                    if(err){
-                        req.flash("error", err.message);
-                        return res.redirect("back");
-                    }
-                    console.log("destroyed");
-                    cloudinary.v2.uploader.upload(req.file.path, function (err, result) {
-                        if (err) {
-                            req.flash("error", err.message);
-                            return res.redirect("back");
-                        }
-                        console.log("uploaded");
-                        foundCampground.image = result.secure_url;
-                        foundCampground.imageId = result.public_id;
-                        foundCampground.save();
-                        console.log("saved");
-                        console.log(foundCampground);
+                try {
+                    await cloudinary.v2.uploader.destroy(foundCampground.imageId);
+                    let result = await cloudinary.v2.uploader.upload(req.file.path);
 
-                        //find the campground by id and update
-                        //clean this mess up before final version
-                        Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
-                            if (err) {
-                                req.flash("error", err.message);
-                            } else {
-                                console.log("updated");
-                                req.flash("success", "Campground successfuly updated.");
-                                res.redirect("/campgrounds/" + req.params.id);
-                            }
-                        });
-                    });
-                });
-            } else {
-                //find the campground by id and update
-                //clean this mess up before final version (could be much shorter)
-                Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
-                    if (err) {
-                        req.flash("error", err.message);
-                    } else {
-                        console.log("updated");
-                        req.flash("success", "Campground successfuly updated.");
-                        res.redirect("/campgrounds/" + req.params.id);
-                    }
-                });
+                    foundCampground.image = result.secure_url;
+                    foundCampground.imageId = result.public_id;
+                    foundCampground.save();
+                    console.log("saved");
+
+                } catch (err) {
+                    req.flash("error", err.message);
+                    return res.redirect("back");
+                }  
             }
+
+            //find the campground by id and update
+            Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
+                if (err) {
+                    req.flash("error", err.message);
+                } else {
+                    console.log("updated");
+                    req.flash("success", "Campground successfuly updated.");
+                    res.redirect("/campgrounds/" + req.params.id);
+                }
+            });
         });
     });
 });
