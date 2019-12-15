@@ -205,9 +205,23 @@ router.put("/:id", middleware.checkUsersRights, upload.single("campground[image]
 
 //DESTROY campground route
 router.delete("/:id", middleware.checkUsersRights, function(req, res){
-    Campground.findByIdAndRemove(req.params.id, function(err){
-        req.flash("success", "Campground deleted.");
-        res.redirect("/campgrounds");
+    Campground.findById(req.params.id, async function(err, foundCampground){
+        if(err) {
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        try {
+            console.log(foundCampground.imageId);
+            await cloudinary.v2.uploader.destroy(foundCampground.imageId);
+            foundCampground.remove();
+            req.flash("success", "Campground deleted.");
+            res.redirect("/campgrounds");
+        } catch(err) {
+            if(err) {
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
+        }
     });
 });
 
