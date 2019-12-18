@@ -1,16 +1,15 @@
 <% include ../partials/header.ejs %>
 
 <div class="row">
-    <div class="login-form">
+    <div class="custom-form">
 
+        <h1 class="smaller mb-3">Forgotten Password</h1>
         <form action="/forgot" method="POST">
-            <h1 class="smaller">Forgotten Password</h1>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" name="email" autofocus class="form-control">
+                <input type="text" name="email" autofocus class="form-control" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Reser Password">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Reset Password</button>
             </div>
         </form>
         

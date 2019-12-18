@@ -31,6 +31,22 @@ nav {
     margin: auto 1.5rem;
 }
 
+
+.camps-container img {
+    height: 250px;
+    width: 100%;
+}
+.camps-container {
+    width: 100%;
+    padding: 3px;
+    border: 0.5px solid rgb(204, 202, 202);
+    text-align: center;
+}
+
+.camps-container .btn {
+    opacity: 0.9;
+}
+
 .camp-show-content {
     padding: .5rem;
 }
@@ -98,17 +114,6 @@ nav {
     font-size: 20px !important;
 }
 
-
-.camps-container img {
-    height: 250px;
-    width: 100%;
-}
-.camps-container {
-    width: 100%;
-    padding: 3px;
-    border: 0.5px solid rgb(204, 202, 202);
-    text-align: center;
-}
 
 .custom-form {
     width: 30%; 
