@@ -1,39 +1,50 @@
 <% include ../partials/header.ejs %>
 
+<div class="background">
+    
+    <div class="container">
+        <header class="jumbotron">
+            
+            <div class="container m-4">
+                <h1 class="mb-2">Place for every Nomad!</h1>
+                <p class="lead">Find for yourself the best camping spot on the planet and go for another advanture.</p>
+                <hr class="my-4">
+                <p>Our team has been to more than 90 countries and explored for you over 2400 totally stunning places. Keep wondering?... <br>John Waite, nowadays probably the oldest backpacker with his 89 years, also started his new life wondering. <br>Now he wonders on his 30 years long journey(and still counting) only where <q>nomad</q> next.</p>
+                <p>See it for yourself!</p>
+                <form action="/campgrounds" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" class="form-control mr-2" placeholder="Campground...">
+                        <input type="submit" value="Explore" class="btn btn-outline-dark btn-lg">
+                    </div>
+                    <p class="header-or">OR</p> 
+                    <a href="/campgrounds/new" class="btn btn-outline-dark btn-lg d-inline-block">Add new Campground</a>
+                </form>
+            </div>
 
-<div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>This is the campgrounds site</h1>
-            <p>View our hand-picked campgrounds from all over the world</p>
-            <a href="/campgrounds/new" class="btn btn-primary">Add new Campground</a>
-            <form action="/campgrounds" class="form-inline">
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="Campground search...">
-                    <input type="submit" value="Search" class="btn btn-default">
-                </div>
-            </form>
-        </div>
-    </header>
-    
-    <h4>Let's see the best camping spots on the world</h4>
-    
+        </header>
+    </div>
+
+</div>
+
+<div class="campgrounds-container">
+
     <div class="row">
-        <div class="col-md-12 text-center my-5">
+
+        <div class="col-md-12 text-center">
             <% if(noMatch !== undefined) { %>
                 <h3><%= noMatch %></h3>
             <% } %>
         </div>
 
         <% campgrounds.forEach(function(campground){ %>
-            <div class="camps-container col-lg-4 col-md-6">
+            <div class="camps-container col-lg-4 col-sm-6">
                 <img src="<%= campground.image %>" alt="<%= campground.name %>">
                 <p><%= campground.name %></p>
                 <a href="campgrounds/<%= campground._id %>" class="btn btn-primary">More info</a>
             </div>
         <% }); %>
-    </div>
 
+    </div>
 </div>
 
 

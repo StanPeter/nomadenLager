@@ -57,7 +57,7 @@ router.get("/", function (req, res) {
                 console.log(err);
             } else {
                 if (allCampgrounds.length < 1) {
-                    noMatch = "No campgrounds match that query, please try again.";
+                    noMatch = "No place was found, please try again.";
                 }
                 res.render("campgrounds/index", {campgrounds: allCampgrounds, noMatch: noMatch});
             }

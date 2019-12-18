@@ -1,9 +1,9 @@
 <% include ../partials/header.ejs %>
 
 <div class="row">
-    <div class="login-form">
+    <div class="custom-form">
 
-        <h1 class="text-center mb-4">Login</h1>
+        <h1>Login</h1>
         <form action="/login" method="post">
             <div class="form-group">
                 <input class="form-control" type="text" name="username" placeholder="username">
@@ -15,7 +15,9 @@
                 <button class="btn btn-lg btn-primary btn-block">Login</button>
             </div>
         </form>
-        <a href="/campgrounds">Go Back</a>
+        <a href="/forgot" class="mb-4 d-block">Forgotten Password</a>
+        <hr class="forgotten"><br>
+        <a href="/campgrounds" class="d-block">Go Back</a>
 
     </div>
 </div>

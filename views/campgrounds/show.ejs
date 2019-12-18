@@ -21,10 +21,21 @@
                 <img class="img-responsive" src="<%= campground.image %>" alt="<%= campground.name %>">
                 
                 <div class="caption-full">
-                    <h4 class="pull-right">$<%= campground.price %>/night</h4>
+                    <div class="camp-show nav">
+                        <% if(currentUser) { %>
+                            <% if(campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                            <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
+                            <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <% } %>
+                        <% } %>
+                    <h4 class="camp-show-price">$<%= campground.price %>/night</h4>
+                    </div>
+
                     <h1> <%= campground.name %> </h1>
-                    <p> <%= campground.description %> </p>
-                    <p>
+                    <p class="text-left"> <%= campground.description %> </p>
+                    <p class="camp-show-author">
                         <em>Added by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
                     </p>
                 </div>
@@ -33,12 +44,6 @@
                     <% if(currentUser) { %>
                     <div class="text-right">
                         <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success">Add a comment</a>
-                        <% if(campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
-                        <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
-                        <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        <% } %>
                     </div>
                     <% } %>
 

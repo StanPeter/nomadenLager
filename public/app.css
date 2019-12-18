@@ -1,3 +1,95 @@
+body {
+    
+    font-family: 'Ubuntu Condensed', sans-serif;
+    /* background-image: url("tundra2.jpg");
+    background-color: rgba(255,255,255,.4); */
+    background-color: rgba(168, 181, 202, 0.4);
+    background-blend-mode: lighten;
+    background-repeat: no-repeat;
+    font-size: 18px;
+}
+
+
+nav {
+    margin: 1rem 2rem 8% !important;
+}
+
+.nav-link {
+    color: rgba(255,255,255,.7) !important;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-family: 'Lakki Reddy', cursive;
+    margin: auto;    
+}
+
+
+.header-or {
+    font-size: 2.5rem;
+    letter-spacing: -9px;
+    margin: auto 1.5rem;
+}
+
+.camp-show-price {
+    margin-left: auto;
+}
+
+.camp-show-author {
+    float: left;
+}
+
+.forgotten {
+    margin-bottom: 0;
+    width: 20%;
+    float: left;
+}
+
+.lead {
+    font-size: 1.4rem;
+}
+
+.smaller {
+    font-size: 2.2rem;
+}
+
+.campgrounds-container {
+    background-color: #fff;
+    padding: 10% 5%;
+}
+
+.bg-dark {
+    /* background-color: #5296d8!important; */
+    border-radius: 2rem;
+    padding: 0.2rem 3rem;
+    height: 3rem;
+}
+
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border-radius: 32%;
+    border: 1px solid #333e46;
+    border-bottom-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.jumbotron h1 {
+    letter-spacing: .4rem;
+}
+
+
+.header-bg {
+    background-image: url("https://images.unsplash.com/photo-1531750985903-9018577a2472?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+    background-repeat: no-repeat; /* doesnt repeat the image */
+    background-size: cover;  /* adjust the image 1:1 */
+    font-family: Arial;
+    font-style: italic;
+    font-size: 20px !important;
+}
+
+
 .camps-container img {
     height: 250px;
     width: 100%;
@@ -8,14 +100,19 @@
     border: 0.5px solid rgb(204, 202, 202);
     text-align: center;
 }
-.form-new-camp {
-    width: 35%;
-    margin: 0 auto;
+
+.custom-form {
+    width: 30%; 
+    margin: 1.8rem auto;
 }
 
-.login-form {
-    width: 30%; 
-    margin: 25px auto;
+.custom-form h1 {
+    font-family: 'Lakki Reddy', cursive;
+    text-align: center;
+}
+
+.custom-form a {
+    font-size: 1.3rem;
 }
 
 #map {

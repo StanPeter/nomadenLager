@@ -1,10 +1,10 @@
 <% include ../partials/header.ejs %>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="login-form">
 
         <form action="/forgot" method="POST">
-            <legend>Forgot Password</legend>
+            <h1 class="smaller">Forgotten Password</h1>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" autofocus class="form-control">
@@ -14,6 +14,9 @@
             </div>
         </form>
         
+        <hr class="forgotten"><br>
+        <a href="/campgrounds">Go Back</a>
+
     </div>
 </div>
 
