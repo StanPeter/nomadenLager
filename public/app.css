@@ -31,12 +31,21 @@ nav {
     margin: auto 1.5rem;
 }
 
+.camp-show-content {
+    padding: .5rem;
+}
+
 .camp-show-price {
     margin-left: auto;
 }
 
 .camp-show-author {
     float: left;
+}
+
+.camp-show-text {
+    text-align: left;
+    margin-bottom: 2.5rem;
 }
 
 .forgotten {
