@@ -17,6 +17,10 @@ footer {
     padding-top: 1%;
 }
 
+footer a {
+    color: #cdcfe8;
+}
+
 /* navbar bootstrap */
 .bg-dark {
     background-color: #5296d8!important;
@@ -132,7 +136,7 @@ nav {
 
 
 /* authentication forms */
-.forgotten {
+.custom-form-hr {
     margin-bottom: 0;
     width: 20%;
     float: left;
@@ -140,9 +144,8 @@ nav {
 }
 
 .custom-form {
-    margin-top: 10% !important;
+    margin: 12% auto 25% !important;
     width: 30%; 
-    margin: 1.8rem auto;
 }
 
 .custom-form .btn {

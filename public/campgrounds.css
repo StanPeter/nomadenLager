@@ -17,6 +17,10 @@ footer {
     padding-top: 1%;
 }
 
+footer a {
+    color: #cdcfe8;
+}
+
 /* navbar bootstrap */
 .bg-dark {
     background-color: #5296d8!important;
@@ -42,7 +46,6 @@ nav {
 
 /* header */
 .background {
-    
 }
 
 .header-or {
@@ -93,10 +96,21 @@ nav {
 
 
 /* campgrounds container */
+.campground-container {
+    background-color: #e6e9ea;
+    padding: 10% 12% 15%;
+}
+
+.campground-container li a {
+    color: black;
+}
+
+/* this is from index route */
 .campgrounds-container {
     background-color: #e6e9ea;
     padding: 10% 5% 15%;
 }
+/* ends */
 
 .camps-container img {
     height: 250px;
@@ -130,9 +144,18 @@ nav {
     margin-bottom: 2.5rem;
 }
 
+/* comments */
+.comment-container {
+    text-align: left;
+}
+
+.comment-container .btn {
+    display: inline-block;
+    float: right;
+}
 
 /* authentication forms */
-.forgotten {
+.custom-form-hr  {
     margin-bottom: 0;
     width: 20%;
     float: left;
@@ -171,4 +194,22 @@ nav {
 
 .smaller {
     font-size: 2.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-brand {
+        margin: unset;
+    }
+    .bg-dark {
+        height: unset;
+    }
+    .header-container .btn {
+        margin-right: 10rem;
+    }
+    .header-or {
+        margin-right: 4.5rem;
+    }
+    .header-container .form-group {
+        margin-right: 10rem;
+    }
 }
