@@ -1,7 +1,7 @@
 /* tags */
 body {
     font-family: 'Ubuntu Condensed', sans-serif;
-    background-image: url("../images/wall.jpg");
+    background-image: url("/wall.jpg");
     background-position: left;
     background-color: rgba(255,255,255,.4);
     background-blend-mode: lighten;
@@ -10,15 +10,6 @@ body {
     font-size: 18px;
 }
 
-footer {
-    background: darkgrey;
-    color: #cdcfe8;
-    padding-top: 1%;
-}
-
-footer a {
-    color: #cdcfe8;
-}
 
 /* navbar bootstrap */
 .bg-dark {
@@ -57,6 +48,11 @@ nav {
     margin: 1.8rem auto;
 }
 
+.custom-form input[type=file] {
+    /* border: none;
+    background: none; */
+}
+
 .custom-form .btn {
     background: #2e94eb;
     border: 1px solid #2e94eb;
@@ -85,11 +81,28 @@ nav {
     font-size: 2.2rem;
 }
 
+@media only screen and (max-width: 992px) {
+    .custom-form {
+        margin: 10% auto 20% !important;
+        width: 50%; 
+    }
+}
+
 @media only screen and (max-width: 768px) {
+    .custom-form {
+        margin: 20% auto 40% !important;
+    }
+
     .navbar-brand {
         margin: unset;
     }
     .bg-dark {
         height: unset;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .custom-form {
+        width: 70%; 
     }
 }

@@ -2,31 +2,28 @@
 <!-- using header-campground.ejs / campground.css -->
 
 
-<div class="background">
-    
-    <div class="container">
-        <header class="jumbotron">
-            
-            <div class="container header-container">
-                <h1 class="mb-2">Place for every Nomad!</h1>
-                <h4>Find yourself the best camping spot on the planet and go for another adventure.</h4>
-                <hr class="header-hr">
-                <p>Our team has been to more than 90 countries and explored for you over 2400 totally stunning places. Keep wondering?... <br>John Waite, nowadays probably the oldest backpacker with his 89 years, also started his new life wondering. <br>Now he wonders on his 30 years long journey(and still counting) only where to <em>nomad</em> next.</p>
-                <h4 class="mt-5">See it by yourself!</h4>
-                <form action="/campgrounds" class="form-inline">
-                    <div class="form-group">
-                        <input type="text" name="search" class="form-control mr-2" placeholder="Campground...">
-                        <input type="submit" value="Explore" class="btn btn-outline-dark btn-lg mt-2 mt-sm-0">
-                    </div>
-                    <p class="header-or">OR</p> 
-                    <a href="/campgrounds/new" class="btn btn-outline-dark btn-lg d-inline-block">Add new place</a>
-                </form>
-            </div>
+<div class="container">
+    <header class="jumbotron">
+        
+        <div class="container header-container">
+            <h1 class="mb-2">Place for every Nomad!</h1>
+            <h4>Find yourself the best camping spot on the planet and go for another adventure.</h4>
+            <hr class="header-hr">
+            <p>Our team has been to more than 90 countries and explored for you over 2400 totally stunning places. Keep wondering?... <br>John Waite, nowadays probably the oldest backpacker with his 89 years, also started his new life wondering. <br>Now he wonders on his 30 years long journey(and still counting) only where to <em>nomad</em> next.</p>
+            <h4 class="mt-5">See it by yourself!</h4>
+            <form action="/campgrounds" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control mr-2" placeholder="Campground...">
+                    <input type="submit" value="Explore" class="btn btn-outline-dark btn-lg mt-2 mt-sm-0">
+                </div>
+                <p class="header-or">OR</p> 
+                <a href="/campgrounds/new" class="btn btn-outline-dark btn-lg d-inline-block">Add new place</a>
+            </form>
+        </div>
 
-        </header>
-    </div>
-
+    </header>
 </div>
+
 
 <div class="campgrounds-container">
     <div class="row">
@@ -38,7 +35,7 @@
         </div>
 
         <% campgrounds.forEach(function(campground){ %>
-            <div class="camps-container col-lg-4 col-sm-6">
+            <div class="campground col-lg-4 col-sm-6">
                 <img src="<%= campground.image %>" alt="<%= campground.name %>">
                 <p><%= campground.name %></p>
                 <a href="campgrounds/<%= campground._id %>" class="btn btn-primary">More info</a>

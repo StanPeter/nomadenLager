@@ -1,0 +1,66 @@
+footer {
+    background: #72828a;
+    color: #cdcfe8;
+    padding-top: 1%;
+    font-size: 1rem;
+}
+
+footer i {
+    font-size: 1.2rem;
+}
+
+footer a {
+    color: #cdcfe8;
+}
+
+.footer-contact {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.footer-brand {
+    font-family: 'Lakki Reddy', cursive;
+}
+
+.footer-left {
+    float: left;
+}
+
+.footer-right p {
+    margin-bottom: 0.4rem;
+}
+
+.footer-right p i {
+    font-size: 1rem;
+}
+
+.footer-info {
+    font-size: 1rem;
+}
+
+.footer-hr {
+    width: 65%;
+    margin: .5rem 0 1rem;
+}
+
+.footer-brand:hover, footer i:hover {
+    color: #d0bebe;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 992px) {
+    .footer-hr {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .footer-hr {
+        display: none;
+    }
+    .footer-left, .footer-right, .footer-middle {
+        text-align: center !important;
+    }
+}

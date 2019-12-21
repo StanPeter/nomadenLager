@@ -1,22 +1,13 @@
+/* tags */
 body {
     font-family: 'Ubuntu Condensed', sans-serif;
-    background-image: url("../images/wall2.jpg"); /* img different other css files */
+    background-image: url("/wall2.jpg"); /* img different other css files */
     background-position: left;
     background-color: rgba(255,255,255,.4);
     background-blend-mode: lighten;
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 18px;
-}
-
-footer {
-    background: darkgrey;
-    color: #cdcfe8;
-    padding-top: 1%;
-}
-
-footer a {
-    color: #cdcfe8;
 }
 
 /* navbar bootstrap */
@@ -42,10 +33,7 @@ nav {
 }
 
 
-/* header campground/index.ejs */
-.background {
-}
-
+/* INDEX route header + campgrounds */
 .header-or {
     font-size: 2.5rem;
     letter-spacing: -9px;
@@ -92,62 +80,67 @@ nav {
     font-size: 20px !important;
 }
 
-
-/* campgrounds container */
-.campground-container {
-    background-color: #e6e9ea;
-    padding: 10% 12% 15%;
-}
-
-.campground-container li a {
-    color: black;
-}
-
-/* this is from index route */
 .campgrounds-container {
     background-color: #e6e9ea;
     padding: 10% 5% 15%;
 }
-/* ends */
 
-.camps-container img {
-    height: 250px;
-    width: 100%;
+.campgrounds-container p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
 }
-.camps-container {
+
+/* INDEX + SHOW route */
+.campground {
     width: 100%;
     padding: 3px;
     border: 0.5px solid rgb(204, 202, 202);
     text-align: center;
 }
 
-.camps-container .btn {
+.campground img {
+    height: 250px;
+    width: 100%;
+}
+
+.campground .btn {
     opacity: 0.9;
 }
 
-.camp-show-content {
+/* SHOW route, campground container */
+.background {
+    background-color: #e6e9ea;
+    padding: 10% 12% 15%;
+}
+
+.background li a, .background h1 {
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.campground-content {
     padding: .5rem;
 }
 
-.camp-show-price {
+.campground-price {
     margin-left: auto;
 }
 
-.camp-show-author {
-    float: left;
+.campground-author {
+    text-align: left;
 }
 
-.camp-show-text {
+.campground-text {
     text-align: left;
     margin-bottom: 2.5rem;
 }
 
 /* comments */
-.comment-container {
+.comment {
     text-align: left;
 }
 
-.comment-container .btn {
+.comment .btn {
     display: inline-block;
     float: right;
 }
@@ -167,6 +160,7 @@ nav {
 @media only screen and (max-width: 768px) {
     .navbar-brand {
         margin: unset;
+        padding-top: 1rem;
     }
     .bg-dark {
         height: unset;
@@ -175,7 +169,7 @@ nav {
         margin-right: 10rem;
     }
     .header-or {
-        margin-right: 4.5rem;
+        margin-right: 7.5rem;
     }
     .header-container .form-group {
         margin-right: 10rem;

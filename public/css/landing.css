@@ -31,27 +31,27 @@ body {
 }
 
 .slideImg li:nth-child(1) {
-    background-image: url("../images/camping.jpg");
+    background-image: url("/camping.jpg");
 
 }
 
 .slideImg li:nth-child(2) {
-    background-image: url("../images/tundra.jpg");
+    background-image: url("/tundra.jpg");
     animation-delay: 10s;
 }
 
 .slideImg li:nth-child(3) {
-    background-image: url("../images/hintersee.jpg");
+    background-image: url("/hintersee.jpg");
     animation-delay: 20s;
 }
 
 .slideImg li:nth-child(4) {
-    background-image: url("../images/hike.jpg");
+    background-image: url("/hike.jpg");
     animation-delay: 30s;
 }
 
 .slideImg li:nth-child(5) {
-    background-image: url("../images/nature.jpg");
+    background-image: url("/nature.jpg");
     animation-delay: 40s;
 }
 
