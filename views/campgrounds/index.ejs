@@ -1,16 +1,16 @@
-<% include ../partials/header.ejs %>
+<% include ../partials/header-campgrounds.ejs %>
 
 <div class="background">
     
     <div class="container">
         <header class="jumbotron">
             
-            <div class="container m-4">
+            <div class="container header-container">
                 <h1 class="mb-2">Place for every Nomad!</h1>
-                <p class="lead">Find for yourself the best camping spot on the planet and go for another advanture.</p>
-                <hr class="my-4">
-                <p>Our team has been to more than 90 countries and explored for you over 2400 totally stunning places. Keep wondering?... <br>John Waite, nowadays probably the oldest backpacker with his 89 years, also started his new life wondering. <br>Now he wonders on his 30 years long journey(and still counting) only where <q>nomad</q> next.</p>
-                <p>See it for yourself!</p>
+                <h4>Find yourself the best camping spot on the planet and go for another adventure.</h4>
+                <hr class="header-hr">
+                <p>Our team has been to more than 90 countries and explored for you over 2400 totally stunning places. Keep wondering?... <br>John Waite, nowadays probably the oldest backpacker with his 89 years, also started his new life wondering. <br>Now he wonders on his 30 years long journey(and still counting) only where to <em>nomad</em> next.</p>
+                <h4 class="mt-5">See it by yourself!</h4>
                 <form action="/campgrounds" class="form-inline">
                     <div class="form-group">
                         <input type="text" name="search" class="form-control mr-2" placeholder="Campground...">
@@ -46,6 +46,8 @@
 
     </div>
 </div>
+
+
 
 
 <% include ../partials/footer.ejs %>

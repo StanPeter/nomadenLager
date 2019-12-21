@@ -2,7 +2,7 @@
 body {
     
     font-family: 'Ubuntu Condensed', sans-serif;
-    background-image: url("images/wall.jpg");
+    background-image: url("images/wall2.jpg");
     background-position: left;
     background-color: rgba(255,255,255,.4);
     background-blend-mode: lighten;
@@ -42,7 +42,7 @@ nav {
 
 /* header */
 .background {
-
+    
 }
 
 .header-or {
@@ -94,8 +94,8 @@ nav {
 
 /* campgrounds container */
 .campgrounds-container {
-    background-color: #fff;
-    padding: 10% 5%;
+    background-color: #e6e9ea;
+    padding: 10% 5% 15%;
 }
 
 .camps-container img {

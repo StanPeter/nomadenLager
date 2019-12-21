@@ -1,22 +1,20 @@
 <% include ../partials/header.ejs %>
 
-<div class="row">
-    <div class="custom-form">
+<div class="custom-form">
 
-        <h1 class="smaller mb-3">Forgotten Password</h1>
-        <form action="/forgot" method="POST">
-            <div class="form-group">
-                <input type="text" name="email" autofocus class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Reset Password</button>
-            </div>
-        </form>
-        
-        <hr class="forgotten"><br>
-        <a href="/campgrounds">Go Back</a>
+    <h1 class="smaller mb-3">Forgotten Password</h1>
+    <form action="/forgot" method="POST">
+        <div class="form-group">
+            <input type="text" name="email" autofocus class="form-control" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Reset Password</button>
+        </div>
+    </form>
+    
+    <hr class="forgotten"><br>
+    <a href="/campgrounds">Go Back</a>
 
-    </div>
 </div>
 
 
