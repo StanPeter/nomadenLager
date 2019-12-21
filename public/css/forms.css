@@ -1,7 +1,7 @@
 /* tags */
 body {
     font-family: 'Ubuntu Condensed', sans-serif;
-    background-image: url("images/wall.jpg");
+    background-image: url("../images/wall.jpg");
     background-position: left;
     background-color: rgba(255,255,255,.4);
     background-blend-mode: lighten;
@@ -10,6 +10,15 @@ body {
     font-size: 18px;
 }
 
+footer {
+    background: darkgrey;
+    color: #cdcfe8;
+    padding-top: 1%;
+}
+
+footer a {
+    color: #cdcfe8;
+}
 
 /* navbar bootstrap */
 .bg-dark {
@@ -35,7 +44,7 @@ nav {
 
 
 /* authentication forms */
-.forgotten {
+.custom-form-hr  {
     margin-bottom: 0;
     width: 20%;
     float: left;
@@ -43,7 +52,7 @@ nav {
 }
 
 .custom-form {
-    margin-top: 10% !important;
+    margin: 10% auto 15% !important;
     width: 30%; 
     margin: 1.8rem auto;
 }
@@ -74,4 +83,13 @@ nav {
 
 .smaller {
     font-size: 2.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-brand {
+        margin: unset;
+    }
+    .bg-dark {
+        height: unset;
+    }
 }

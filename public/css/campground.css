@@ -1,8 +1,6 @@
-/* tags */
 body {
-    
     font-family: 'Ubuntu Condensed', sans-serif;
-    background-image: url("images/wall.jpg");
+    background-image: url("../images/wall2.jpg"); /* img different other css files */
     background-position: left;
     background-color: rgba(255,255,255,.4);
     background-blend-mode: lighten;
@@ -44,9 +42,8 @@ nav {
 }
 
 
-/* header */
+/* header campground/index.ejs */
 .background {
-
 }
 
 .header-or {
@@ -97,10 +94,21 @@ nav {
 
 
 /* campgrounds container */
-.campgrounds-container {
-    background-color: #fff;
-    padding: 10% 5%;
+.campground-container {
+    background-color: #e6e9ea;
+    padding: 10% 12% 15%;
 }
+
+.campground-container li a {
+    color: black;
+}
+
+/* this is from index route */
+.campgrounds-container {
+    background-color: #e6e9ea;
+    padding: 10% 5% 15%;
+}
+/* ends */
 
 .camps-container img {
     height: 250px;
@@ -134,35 +142,14 @@ nav {
     margin-bottom: 2.5rem;
 }
 
-
-/* authentication forms */
-.custom-form-hr {
-    margin-bottom: 0;
-    width: 20%;
-    float: left;
-    box-shadow: 0px 1px 0px 0px rgba(6,9,0,0.25);
+/* comments */
+.comment-container {
+    text-align: left;
 }
 
-.custom-form {
-    margin: 12% auto 25% !important;
-    width: 30%; 
-}
-
-.custom-form .btn {
-    background: #2e94eb;
-    border: 1px solid #2e94eb;
-    opacity: .9;
-}
-
-.custom-form h1 {
-    font-family: 'Lakki Reddy', cursive;
-    text-align: center;
-    color: #2e94eb;
-}
-
-.custom-form a {
-    font-size: 1.3rem;
-    color: #3576bd;
+.comment-container .btn {
+    display: inline-block;
+    float: right;
 }
 
 
@@ -174,4 +161,23 @@ nav {
 
 .smaller {
     font-size: 2.2rem;
+}
+
+/* media queries */ 
+@media only screen and (max-width: 768px) {
+    .navbar-brand {
+        margin: unset;
+    }
+    .bg-dark {
+        height: unset;
+    }
+    .header-container .btn {
+        margin-right: 10rem;
+    }
+    .header-or {
+        margin-right: 4.5rem;
+    }
+    .header-container .form-group {
+        margin-right: 10rem;
+    }
 }

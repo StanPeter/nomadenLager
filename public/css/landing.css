@@ -1,14 +1,9 @@
+/* tags */
 body {
     background-color: #000;
 }
 
-
-#header h1 {
-    font-family: 'Lakki Reddy', cursive;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
+/* classes */
 .slideImg {
     position: fixed;
     width: 100%;
@@ -36,30 +31,31 @@ body {
 }
 
 .slideImg li:nth-child(1) {
-    background-image: url("images/camping.jpg");
+    background-image: url("../images/camping.jpg");
 
 }
 
 .slideImg li:nth-child(2) {
-    background-image: url("images/tundra.jpg");
+    background-image: url("../images/tundra.jpg");
     animation-delay: 10s;
 }
 
 .slideImg li:nth-child(3) {
-    background-image: url("images/hintersee.jpg");
+    background-image: url("../images/hintersee.jpg");
     animation-delay: 20s;
 }
 
 .slideImg li:nth-child(4) {
-    background-image: url("images/hike.jpg");
+    background-image: url("../images/hike.jpg");
     animation-delay: 30s;
 }
 
 .slideImg li:nth-child(5) {
-    background-image: url("images/nature.jpg");
+    background-image: url("../images/nature.jpg");
     animation-delay: 40s;
 }
 
+/* header id */
 #header {
     z-index: 1;
     position: relative;
@@ -68,10 +64,16 @@ body {
 }
 
 #header h1 {
+    font-family: 'Lakki Reddy', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#header h1 {
     color: white;
 }
 
-
+/* animation */ 
 @keyframes imageAnimation {
     0% {
         opacity: 0;
