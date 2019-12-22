@@ -72,15 +72,11 @@ nav {
 
 
 /* others */
-#map {
-    height: 400px;
-    width: 100%;
-}
-
 .smaller {
     font-size: 2.2rem;
 }
 
+/* queries */
 @media only screen and (max-width: 992px) {
     .custom-form {
         margin: 10% auto 20% !important;
@@ -92,7 +88,6 @@ nav {
     .custom-form {
         margin: 20% auto 40% !important;
     }
-
     .navbar-brand {
         margin: unset;
     }

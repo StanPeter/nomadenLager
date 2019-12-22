@@ -6,17 +6,17 @@
     <div class="row">
 
         <!-- information links + google map -->
-        <div class="col-md-3">
+        <div class="col-md-3 campground-map order-sm-2 order-md-1">
             <h3>Information</h3>
             <div class="list-group">
                 <li class="list-grou-item active"><a href="/campgrounds/<%= campground._id %>">Description</a></li>
                 <li class="list-grou-item"><a href="#">Photos</a></li>
-                <li class="list-grou-item"><a href="/users/<%= campground.author.id %>">About</a></li>
+                <li class="list-grou-item"><a href="/users/<%= campground.author.id %>"><%= campground.author.username.substring(0, 7) %> profile</a></li>
             </div>
             <div id="map" class="mt-2"></div>
         </div>
         <!-- campground info + comments -->
-        <div class="col-md-9"> 
+        <div class="col-md-9 order-sm-1 order-md-2"> 
             <div class="campground thumbnail">
                 
                 <img class="img-responsive" src="<%= campground.image %>" alt="<%= campground.name %>">
@@ -38,9 +38,19 @@
                             <% } %>
                             <h4 class="campground-price">$<%= campground.price %>/night</h4>
                         </div>
-                        <h1> <%= campground.name %> </h1>
+                        <h1 class="mt-4"> <%= campground.name %> </h1>
+                        <div class="hidden">
+                            <hr class="mt-5">
+                            <div class="campground-hidden-header">
+                                <li class="list-grou-item active"><a>Photos</a></li>
+                                <li class="list-grou-item"><a href="#">Map</a></li>
+                                <li class="list-grou-item">
+                                    <a href="/users/<%= campground.author.id %>">Author</a>
+                                </li>
+                            </div>
+                        </div>
                         <!-- campground text -->
-                        <hr>
+                        <hr class="my-3">
                         <p class="campground-text"> <%= campground.description %> </p>
 
                     </div>

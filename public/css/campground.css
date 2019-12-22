@@ -118,6 +118,14 @@ nav {
     font-family: 'Quicksand', sans-serif;
 }
 
+.campground-map {
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
 .campground-content {
     padding: .5rem;
 }
@@ -135,6 +143,22 @@ nav {
     margin-bottom: 2.5rem;
 }
 
+.hidden {
+    display: none;
+}
+
+.campground-hidden-header { /* created due to resolution problems on phones*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
+
+.campground-hidden-header li { 
+    list-style: none;
+    padding: 0rem .5rem;
+}
+
 /* comments */
 .comment {
     text-align: left;
@@ -147,17 +171,26 @@ nav {
 
 
 /* others */
-#map {
-    height: 400px;
-    width: 100%;
-}
-
 .smaller {
     font-size: 2.2rem;
 }
 
 /* media queries */ 
+@media only screen and (max-width: 992px) {
+    .campground-map {
+        padding: 0;
+    }
+    .background .col-md-9 {
+        padding: 0 0 0 0.5rem;
+    }
+    .campground-content .nav .btn, .campground-content .btn-success {
+        padding: 0.15rem .5rem;
+        height: 2rem;
+    }
+}
+
 @media only screen and (max-width: 768px) {
+    /* navbar */
     .navbar-brand {
         margin: unset;
         padding-top: 1rem;
@@ -165,6 +198,7 @@ nav {
     .bg-dark {
         height: unset;
     }
+    /* index campground */
     .header-container .btn {
         margin-right: 10rem;
     }
@@ -173,5 +207,18 @@ nav {
     }
     .header-container .form-group {
         margin-right: 10rem;
+    }
+    /* show campground */
+    .campground-map {
+        display: none;
+    }
+    .hidden { 
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .campground-hidden-header { 
+        font-size: 1.1rem;
     }
 }
