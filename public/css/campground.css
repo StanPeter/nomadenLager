@@ -221,4 +221,13 @@ nav {
     .campground-hidden-header { 
         font-size: 1.1rem;
     }
+    .navbar-brand {
+        font-size: 1.7rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
 }

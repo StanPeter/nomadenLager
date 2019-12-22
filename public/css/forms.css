@@ -100,4 +100,7 @@ nav {
     .custom-form {
         width: 70%; 
     }
+    .navbar-brand {
+        font-size: 1.7rem;
+    }
 }
