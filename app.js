@@ -24,6 +24,17 @@ var commentRoutes    = require("./routes/comments"),
 mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
 // seedDB();
 
+async function deleteAll() {
+    try{
+        await Comment.remove({});
+        await Campground.remove({});
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+deleteAll();
+
 //setting for YelpCamp project
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public/css"));
