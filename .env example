@@ -1,0 +1,16 @@
+PORT=3000
+
+DATABASEURL=mongodb://localhost/campgroundsdb
+DATABASE_URL_HEROKU="mongodb+srv://xxxxxxxxx:yyyyy@cluster0-sssss.mongodb.net/test?retryWrites=true&w=majority"
+
+CAMPGROUNDEMAIL=bestcampground@gmail.com
+CAMPGROUNDPASSWORD=campsssssssssss
+
+GEOCODE_API_KEY=AIzaSyBZhssssssssssssssssssssssssssssssssssssssss
+GEOCODE_API_URL=AIzaSyAssssssssssssssssssssssssssssssssssssssss
+GEOCODE_API_URL_HEROKU="AIzaSyssssssssssssssssssssssssssssssssssssssss"
+
+CLOUDINARY_API_KEY=ssssssssssssssssssssssssssssssssssssssss
+CLOUDINARY_API_SECRET=ssssssssssssssssssssssssssssssssssssssss
+
+

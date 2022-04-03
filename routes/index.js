@@ -55,7 +55,7 @@ router.post("/register", function (req, res) {
             res.render("registration/register");
         }
         passport.authenticate("local")(req, res, function () {
-            req.flash("success", "You successfuly signed up" + req.body.username);
+            req.flash("success", "You successfuly signed up " + req.body.username);
             res.redirect("/campgrounds");
         });
     });
